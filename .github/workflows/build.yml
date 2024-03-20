@@ -21,7 +21,7 @@ jobs:
 
       - run: apt update
 
-      - run: apt install git
+      - run: apt install -y git
 
       - run: sh ./run.sh
 

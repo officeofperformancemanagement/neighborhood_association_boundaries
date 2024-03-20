@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/osgeo/gdal
+      # see https://github.com/actions/runner/issues/2033#issuecomment-1598547465
+      options: --user 1001
     permissions:
       contents: write
     name: main

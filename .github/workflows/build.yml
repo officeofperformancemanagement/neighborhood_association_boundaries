@@ -19,6 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - run: git --version
+
       - run: apt install git
 
       - run: sh ./run.sh

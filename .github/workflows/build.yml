@@ -13,8 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/osgeo/gdal
-      # see https://github.com/actions/runner/issues/2033#issuecomment-1598547465
-      options: --user 1001
     permissions:
       contents: write
     name: main
@@ -28,6 +26,9 @@ jobs:
       - run: sh ./run.sh
 
       - run: ls ./files
+
+      # prevents fatal: detected dubious ownership in repository at '/__w/neighborhood_association_boundaries/neighborhood_association_boundaries'
+      - run: git config --global --add safe.directory /__w/neighborhood_association_boundaries/neighborhood_association_boundaries
 
       # Commit all changed files back to the repository
       - uses: stefanzweifel/git-auto-commit-action@v5

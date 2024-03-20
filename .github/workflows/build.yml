@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: ./run.sh
+      - run: sh ./run.sh
 
       # Commit all changed files back to the repository
       - uses: stefanzweifel/git-auto-commit-action@v5

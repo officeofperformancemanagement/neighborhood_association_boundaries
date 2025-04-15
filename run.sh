@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-curl --output="temp.kml" "https://www.google.com/maps/d/kml?mid=1wWZZ8zxo50QUP9_VKePCquh9D_FWk-w&forcekml=1"
+curl "https://www.google.com/maps/d/kml?mid=1wWZZ8zxo50QUP9_VKePCquh9D_FWk-w&forcekml=1" > temp.kml
 
 ogr2ogr -dim XY -f CSV -lco GEOMETRY=AS_WKT -lco GEOMETRY_NAME=boundary -nlt MULTIPOLYGON -sql "SELECT Name AS name,description AS description FROM \"Neighborhood Association Boundaries\" WHERE OGR_GEOMETRY='MultiPolygon' or OGR_GEOMETRY='Polygon'" -skipfailures ./files/neighborhood_association_boundaries.csv temp.kml
 
